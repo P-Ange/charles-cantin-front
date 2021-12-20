@@ -1,0 +1,21 @@
+@font-face {
+    font-family: "Orev";
+    src: url("../fonts/Orev-Regular.woff2") format("woff2"),
+           url("../fonts/Orev-Regular.woff") format("woff"); }
+
+@font-face {
+    font-family: "Techno";
+        src: url("../fonts/Techno.woff") format("woff");
+   }
+
+   nav {
+       font-family: 'Orev';
+   }
+
+   h1 {
+    font-family: 'Techno';
+}
+
+footer {
+    font-family: 'Orev';
+}
