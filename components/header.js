@@ -2,14 +2,30 @@ import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { SocialIcon } from "react-social-icons";
 import Link from "next/link";
+import axios from "axios";
 
-function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+
+export default class Header extends React.Component {
+  
+  componentDidMount() {
+    axios.get(`https://strapi-p-ange.herokuapp.com/informations`)
+    .then(res => {
+        const informations = res.data
+        this.setState({ informations });
+    })
+}
+
+constructor(props) {
+  super(props);
+  this.state = {
+    isOpen: false,
+    informations: [],
+  }};
+  render () {
   return (
        
     
     <div>
-
       <nav className="bg-[#47555e] border-b-4 border-white text-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center h-36">
@@ -54,10 +70,11 @@ function Header() {
           
                   
 
-                  <Link passHref
-                    href="http://www.instagram.com"
-                    className="bg-[#151119] rounded-full hover:bg-gray-700 text-white px-3 py-2 font-medium"
-                  ><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                  <a passHref
+                    target="_blank"
+                    href={this.state.informations.Instagram}
+                    rel="noreferrer"
+                    ><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                   width="16.000000pt" height="16.000000pt" viewBox="0 0 16.000000 16.000000"
                   preserveAspectRatio="xMidYMid meet">
                  
@@ -73,13 +90,14 @@ function Header() {
                  20 24 20 40 0z"/>
                  </g>
                  </svg>
-                  </Link>
+                  </a>
 
 
                 
-                  <Link passHref
-                    href="http://www.facebook.com"
-                    className="bg-[#151119] rounded-full hover:bg-gray-700 text-white px-3 py-2 font-medium"
+                  <a passHref
+                  target="_blank"
+                    href={this.state.informations.Facebook}
+                   
                   ><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                   width="16.000000pt" height="16.000000pt" viewBox="0 0 16.000000 16.000000"
                   preserveAspectRatio="xMidYMid meet">
@@ -93,7 +111,7 @@ function Header() {
                  70 79 l63 -3 0 -65z"/>
                  </g>
                  </svg>
-                  </Link>
+                  </a>
 
 
                 </div>
@@ -101,14 +119,14 @@ function Header() {
             </div>
             <div className="-mr-2 flex md:hidden">
               <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => this.setState({isOpen: !this.state.isOpen})}
                 type="button"
                 className=" bg-[#47555e] inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-[#47555e] focus:outline-none "
                 aria-controls="mobile-menu"
                 aria-expanded="false"
               >
                 <span className="sr-only">Open main menu</span>
-                {!isOpen ? (
+                {!this.state.isOpen ? (
                   <svg
                     className="block h-6 w-6"
                     fill="none"
@@ -145,7 +163,7 @@ function Header() {
         </div>
 
         <Transition
-          show={isOpen}
+          show={this.state.isOpen}
           enter="transition ease-out duration-100 transform"
           enterFrom="opacity-0 scale-95"
           enterTo="opacity-100 scale-100"
@@ -187,7 +205,7 @@ function Header() {
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                 <Link passHref
-                  href="http://www.facebookcom">
+                  href="http://www.facebook.com">
                  <SocialIcon
                 network="facebook"
                 bgColor="white"
@@ -212,7 +230,5 @@ function Header() {
       </nav>
 
       </div>
-  );
+  )};
 }
-
-export default Header;
