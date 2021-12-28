@@ -13,11 +13,11 @@ const Images = ({ image, style }) => {
       loader={loader}
       src={imageUrl}
       alt={image.alternativeText || image.name}
-      width={image.width}
-      height={image.height}
+      width={900}
+      height={700}
       Layout='responsive'
       Loading="lazy"
-      style={style}
+      className=" rounded-xl object-cover imagecss"
       src={url}
       alt={alternativeText || ""}
     />
