@@ -2,6 +2,7 @@ import Head from "next/head";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { MailIcon, PhoneIcon } from "@heroicons/react/outline";
+import Script from "next/script";
 
 export default function header() {
   return (
@@ -331,6 +332,12 @@ export default function header() {
       </div>
 
       <Footer />
+      <Script id="1">
+      {`window.onbeforeunload = () => {
+        for (const form of document.getElementsByTagName('form')) {
+        form.reset();}}`}
+      </Script>
+      {/* fin du script  */}
     </div>
   );
 }
