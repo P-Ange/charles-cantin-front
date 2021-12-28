@@ -54,7 +54,7 @@ function Header() {
           
                   
 
-                  <Link
+                  <Link passHref
                     href="http://www.instagram.com"
                     className="bg-[#151119] rounded-full hover:bg-gray-700 text-white px-3 py-2 font-medium"
                   ><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +77,7 @@ function Header() {
 
 
                 
-                  <Link
+                  <Link passHref
                     href="http://www.facebook.com"
                     className="bg-[#151119] rounded-full hover:bg-gray-700 text-white px-3 py-2 font-medium"
                   ><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +186,7 @@ function Header() {
                 <div 
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
-                <Link
+                <Link passHref
                   href="http://www.facebookcom">
                  <SocialIcon
                 network="facebook"
@@ -197,7 +197,7 @@ function Header() {
                 <div 
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
-                <Link
+                <Link passHref
                   href="http://www.instagram.com">
                  <SocialIcon
                 network="instagram"

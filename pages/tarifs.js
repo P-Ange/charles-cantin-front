@@ -20,7 +20,7 @@ export default function Tarif({ global, tarifs }) {
               </div>
               <h2 className="bg-gray-700 text-white  text-center px-2"> {tarif.Descriptifs}</h2>
               <div className="text-center py-4">
-                <button class="bg-[#151119] hover:bg-gray-700 text-white font-bold py-2 px-4 border border-gray-700 rounded  ">
+                <button className="bg-[#151119] hover:bg-gray-700 text-white font-bold py-2 px-4 border border-gray-700 rounded  ">
                   {tarif.Prix}
                 </button>
               </div>

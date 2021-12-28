@@ -18,8 +18,6 @@ const Images = ({ image, style }) => {
       Layout='responsive'
       Loading="lazy"
       className=" rounded-xl object-cover imagecss"
-      src={url}
-      alt={alternativeText || ""}
     />
   );
 };
