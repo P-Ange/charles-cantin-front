@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Header from '../components/header';
 import Footer from '../components/footer';
+import { fetchAPI } from '../lib/api';
 
-export default function header () {
+
+export default function header ({accueil}) {
 
   return (
     <div>
@@ -14,11 +16,21 @@ export default function header () {
       </Head>
       
         <Header /><div className='relative'>
-        <img className='h-[calc(100vh-148px)] object-cover w-screen' src="https://zupimages.net/up/21/50/sqyn.jpg" alt="" />
-        <h1 className="absolute inset-0 z-10 flex justify-center items-center text-6xl text-white">CHARLES CANTIN - PHOTOGRAPHE</h1> 
+        <img className='h-[calc(100vh-148px)] object-cover w-screen' src={accueil.Image.url} alt="Image-cover" />
+        <h1 className="absolute inset-0 z-10 flex justify-center items-center text-6xl text-white">{accueil.Titre}</h1> 
     </div>
 
     <Footer />
     </div>
   );
 };
+export async function getStaticProps() {
+
+  const [accueil] = await Promise.all([
+    fetchAPI("/accueil"),
+
+  ]);
+  return{
+    props: {accueil},
+  };
+}

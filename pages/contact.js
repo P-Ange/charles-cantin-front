@@ -3,8 +3,10 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import { MailIcon, PhoneIcon } from "@heroicons/react/outline";
 import Script from "next/script";
+import { fetchAPI } from "../lib/api";
 
-export default function header() {
+
+export default function contact({informations}) {
   return (
     <div>
       <Head>
@@ -137,7 +139,7 @@ export default function header() {
                         className="flex-shrink-0 w-6 h-6 text-white"
                         aria-hidden="true"
                       />
-                      <span className="ml-3">+33 06 06 06 06 07</span>
+                      <span className="ml-3">{informations.Telephone}</span>
                     </dd>
                     <dt>
                       <span className="sr-only">E-mail</span>
@@ -147,14 +149,16 @@ export default function header() {
                         className="flex-shrink-0 w-6 h-6 text-white"
                         aria-hidden="true"
                       />
-                      <span className="ml-3">support@charlescantin.fr</span>
+                      <span className="ml-3">{informations.email}</span>
                     </dd>
                   </dl>
                   <ul role="list" className="mt-8 flex space-x-12">
                     <li>
                       <a
                         className="text-indigo-200 hover:text-indigo-100"
-                        href="http://www.facebook.com"
+                        href={informations.Facebook}
+                        target="_blank"
+                        rel="noreferrer"
                       >
                         <span className="sr-only">Facebook</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46" role="img" aria-labelledby="facebook-icon">
@@ -168,7 +172,9 @@ export default function header() {
                     <li>
                       <a
                         className="text-indigo-200 hover:text-indigo-100"
-                        href="http://www.instagram.com"
+                        href={informations.Instagram}
+                        target="_blank"
+                        rel="noreferrer"
                       >
                         <span className="sr-only">Instagram</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46" role="img" aria-labelledby="instagram-icon">
@@ -340,4 +346,14 @@ export default function header() {
       {/* fin du script  */}
     </div>
   );
+}
+export async function getStaticProps() {
+
+  const [informations] = await Promise.all([
+    fetchAPI("/informations"),
+
+  ]);
+  return{
+    props: {informations},
+  };
 }
