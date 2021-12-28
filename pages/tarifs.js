@@ -1,11 +1,19 @@
 import Header from "../components/header";
+import Head from "next/head";
 import Footer from "../components/footer";
 import { fetchAPI } from "../lib/api";
 import Images from "../components/image";
+import { getStrapiMedia } from "../lib/media";
 
-export default function Tarif({ global, tarifs }) {
+export default function Tarif({ seo, tarifs }) {
   return (
-    <div>
+  
+    <div>  <Head>
+    
+    <title>{seo.siteName}</title>
+    <meta name="description" content={seo.MetaDescription} />
+    <link rel="shortcut icon" href={getStrapiMedia(seo.Favicon)} />
+  </Head>
       <Header />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-4">
         {tarifs.map((tarif) => (
@@ -33,11 +41,11 @@ export default function Tarif({ global, tarifs }) {
   );
 }
 export async function getStaticProps() {
-  const [global, tarifs] = await Promise.all([
-    fetchAPI("/global"),
+  const [seo, tarifs] = await Promise.all([
+    fetchAPI("/seo"),
     fetchAPI("/tarif-solos"),
   ]);
   return {
-    props: { global, tarifs },
+    props: { seo, tarifs },
   };
 }

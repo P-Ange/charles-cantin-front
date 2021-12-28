@@ -31,11 +31,12 @@ constructor(props) {
           <div className="flex justify-center h-36">
             <div className="flex items-center">
               <div className="flex-shrink-0 w-15 z-10 ">
-                <img
+               <Link href="/" passHref>
+                 <img
                   className="image-header flex"
                   src="https://zupimages.net/up/21/50/ij3h.png"
                   alt="Charles Cantin"
-                />
+                /></Link>
               </div>
               <div className="hidden md:block">
                 <div className="ml-20 flex items-baseline space-x-10 ">
