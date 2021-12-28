@@ -72,8 +72,8 @@ constructor(props) {
 
                   <a passHref
                     target="_blank"
-                    href={this.state.informations.Instagram}
                     rel="noreferrer"
+                    href={this.state.informations.Instagram}
                     ><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                   width="16.000000pt" height="16.000000pt" viewBox="0 0 16.000000 16.000000"
                   preserveAspectRatio="xMidYMid meet">
@@ -96,6 +96,7 @@ constructor(props) {
                 
                   <a passHref
                   target="_blank"
+                  rel="noreferrer"
                     href={this.state.informations.Facebook}
                    
                   ><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
